@@ -1,0 +1,51 @@
+<app-account>
+	<form [formGroup]="form">
+		<span class="account-form-title">
+			Create account
+		</span>
+		<ui-carousel #carousel [infinite]="false" [fade]="false" [speed]="600" [arrows]="false">
+		<!-- PAGE 1 -->
+		<ui-carousel-item>
+				<app-input placeholder="Username" type="text" icon="fas fa-user" [control]="form.controls['username']"></app-input>
+				<app-input placeholder="Email" type="email" icon="fas fa-at" [control]="form.controls['email']"></app-input>
+				<app-input placeholder="Password" type="password" icon="fas fa-unlock-alt" [control]="form.controls['password']"></app-input>
+		</ui-carousel-item>
+		<!-- PAGE 2 -->
+		<ui-carousel-item>
+				<app-input placeholder="First name" type="text" icon="fas fa-user" [control]="form.controls['firstname']"></app-input>
+				<app-input placeholder="Last name" type="email" icon="fas fa-user" [control]="form.controls['lastname']"></app-input>
+				<app-input placeholder="Date of birth" type="date" icon="far fa-calendar-alt" [control]="form.controls['dob']"></app-input>
+		</ui-carousel-item>
+		
+		<!-- PAGE 3 -->
+		<ui-carousel-item>
+				<app-input placeholder="Address" type="text" icon="far fa-address-card" [control]="form.controls['address']"></app-input>
+				<app-input placeholder="City" type="text" icon="fas fa-mail-bulk" [control]="form.controls['city']"></app-input>
+
+				<div class="wrap-input100 validate-input">
+					<div class="form-input100" >
+						<select class="selectBox" formControlName="country">
+							<option value="" disabled selected>Select your country</option>
+							<option *ngFor="let country of countries" [value]="country.key">{{country.flag}} - {{country.name}}</option>
+						</select>
+						<span class="symbol-form-input100">
+							<i class="far fa-flag"></i>
+						</span>
+					</div>
+				</div>
+				
+		</ui-carousel-item>
+		</ui-carousel>
+
+		<div *ngIf="error_messages_to_show()">
+			<span class="error-message">{{error_messages_to_show()}}</span>
+		</div>
+		<div *ngIf="message">
+			<span class="error-message">{{message}}</span>
+		</div>
+		<div class="container-account-form-btn">
+			<button class="account-form-btn" (click)="next()" (keyup.enter)="next()" [disabled]="buttonDisabled">{{buttonText}}</button>
+		</div>
+</form>
+</app-account>
+<app-captcha #captcha></app-captcha>

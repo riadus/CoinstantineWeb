@@ -1,0 +1,16 @@
+<app-account>
+	<div class="panel">
+		<div class="panel-title">
+			Finalise account
+			<div>
+				<span class="message">{{message}}</span>
+			</div>
+		</div>
+
+		<div class="panel-btn-container">
+			<button class="panel-btn" (click)="goHome()" [disabled]="buttonDisabled">
+				{{buttonText}}
+			</button>
+		</div>
+	</div>
+</app-account>

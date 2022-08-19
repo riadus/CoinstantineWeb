@@ -1,0 +1,38 @@
+<app-account>
+	<form [formGroup]="form" class="account-form validate-form">
+		<span class="account-form-title">
+			Member Login
+		</span>
+		
+		<app-input placeholder="Username" type="text" icon="fas fa-user" flashing="true" [control]="form.controls['username']"></app-input>
+		<app-input placeholder="Password" type="password" icon="fas fa-unlock-alt" flashing="true" [control]="form.controls['password']"></app-input>
+		
+		<div *ngIf="showErrorMessage">
+				<span class="error-message">{{errorMessage}}</span>
+			</div>
+		<div class="container-account-form-btn">
+			<button class="account-form-btn" (click)="login()" (keyup.enter)="login()" [disabled]="buttonDisabled">
+				{{buttonText}}
+			</button>
+		</div>
+
+		<div class="container-accounts-form">
+		<div class="text-center">
+			<span class="txt">
+				Forgot
+			</span>
+			<a class="txt" href="account/forgot-credentials">
+				Username / Password?
+			</a>
+		</div>
+
+		<div class="text-center p-t-10">
+			<a class="txt" href="account/create">
+				<i class="fas fa-user-circle"></i>
+				Create your Account
+			</a>
+		</div>
+	</div>
+	</form>
+</app-account>
+<app-captcha #captcha></app-captcha>

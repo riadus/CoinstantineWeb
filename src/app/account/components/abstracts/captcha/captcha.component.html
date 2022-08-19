@@ -1,0 +1,15 @@
+<div class="captcha">
+    <form [formGroup]="form" >
+    <ngx-invisible-recaptcha #captchaElem
+    (reset)="handleReset()"
+  (ready)="handleReady()"
+  (load)="handleLoad()"
+  (success)="handleSuccess($event)"
+  [useGlobalDomain]="false"
+  [theme]="theme"
+  [type]="type"
+  [badge]="badge"
+  formControlName="recaptcha">
+  </ngx-invisible-recaptcha>
+</form>
+</div>

@@ -1,0 +1,19 @@
+<div *ngIf="showMenu; else withoutMenu">
+<button type="button" mat-button (click)="drawer.toggle()">
+  Menu
+</button>
+
+<div layout="row" layout-fill flex>
+<mat-sidenav-container class="drawer-container">
+  <mat-sidenav #drawer mode="over" class="drawer-side">
+    <app-left-panel></app-left-panel>
+  </mat-sidenav>
+<mat-sidenav-content class="centered">
+  <router-outlet></router-outlet>
+</mat-sidenav-content>
+</mat-sidenav-container>
+</div>
+</div>
+<ng-template #withoutMenu>
+  <router-outlet></router-outlet>
+</ng-template>
